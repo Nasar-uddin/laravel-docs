@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// This is Eloquent data fetching
+use App\Post;
+// To use normal query DB libery is required
+use DB;
 
 class PostsController extends Controller
 {
@@ -13,7 +17,23 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        
+        /*
+        One way of eloquent
+        $post = Post::all();
+        
+        $posts = Post::orderBy('created_at','desc')->get();
+
+        take() is used to limit results
+        $posts = Post::orderBy('created_at','desc')->take(1)->get();
+
+        To use normal query 
+        $post = DB::select('SELECT * FROM posts');
+        */
+        
+        // This is paginate to pagination
+        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        return view('posts.index')->with('posts',$posts);
     }
 
     /**
@@ -45,7 +65,10 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        // we can get post like this
+        //  $post = Post::where('title','Post two')->get();
+        return view('posts.show')->with('post',$post);
     }
 
     /**
