@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request;
+use App\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +28,15 @@ Route::get('/user/{id}/{name}',function($id,$name){
 Route::get('/','PageController@index');
 Route::get('/about','PageController@about');
 Route::get('/services','PageController@services');
+Route::post('/posts/store',function(Request $request){
+    $request->validate([
+        'title'=>'required',
+        'body'=>'required'
+    ]);
+    $post = new Post;
+    $post->title = $request->input('title');
+    $post->body = $request->input('body');
+    $post->save();
+    return redirect('/posts')->with('success','Post Created');
+});
 Route::resource('posts','PostsController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 // This is Eloquent data fetching
 use App\Post;
 // To use normal query DB libery is required
@@ -43,7 +44,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -52,10 +53,14 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request,[
+    //         'title'=>'required',
+    //         'body'=>'required'
+    //     ]);
+    //     return "124";
+    // }
 
     /**
      * Display the specified resource.
