@@ -28,6 +28,7 @@ Route::get('/user/{id}/{name}',function($id,$name){
 Route::get('/','PageController@index');
 Route::get('/about','PageController@about');
 Route::get('/services','PageController@services');
+/*
 Route::post('/posts/store',function(Request $request){
     $request->validate([
         'title'=>'required',
@@ -39,4 +40,5 @@ Route::post('/posts/store',function(Request $request){
     $post->save();
     return redirect('/posts')->with('success','Post Created');
 });
+*/
 Route::resource('posts','PostsController');

@@ -53,14 +53,18 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     $this->validate($request,[
-    //         'title'=>'required',
-    //         'body'=>'required'
-    //     ]);
-    //     return "124";
-    // }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+        return redirect('/posts')->with('success','Post Created');
+    }
 
     /**
      * Display the specified resource.
