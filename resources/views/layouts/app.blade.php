@@ -24,6 +24,11 @@
     </div>
 
     <!-- Scripts -->
+     {{-- <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>--}}
     <script src="{{ asset('js/app.js') }}"></script>
+    
 </body>
 </html>

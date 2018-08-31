@@ -4,7 +4,7 @@
     <h1>{{$post->title}}</h1>
     <p>{!!$post->body!!}</p>
     <hr>
-    <small>Posted at:{{$post->created_at}}</small>
+    <small>Posted at:{{$post->created_at}} By {{ $post->user->name }}</small>
     <hr>
     <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit post</a>
     {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'post','class'=>'pull-right'])!!}

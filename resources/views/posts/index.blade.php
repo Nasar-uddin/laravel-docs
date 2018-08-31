@@ -6,7 +6,7 @@
     @foreach ($posts as $post)
         <div class="well">
             <h2>{{$post->title}}</h2>
-            <p class="text-right"><small>{{$post->created_at}}</small></p>
+            <p class="text-right"><small>{{$post->created_at}} by {{ $post->user->name }}</small></p>
             <a href="posts/{{$post->id}}" class="btn btn-primary">Details</a>
         </div>
     @endforeach

@@ -28,7 +28,7 @@ class PostsController extends Controller
         take() is used to limit results
         $posts = Post::orderBy('created_at','desc')->take(1)->get();
 
-        To use normal query 
+        To use normal query
         $post = DB::select('SELECT * FROM posts');
         */
         
