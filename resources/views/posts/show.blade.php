@@ -6,9 +6,13 @@
     <hr>
     <small>Posted at:{{$post->created_at}} By {{ $post->user->name }}</small>
     <hr>
-    <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit post</a>
-    {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'post','class'=>'pull-right'])!!}
-        {{Form::hidden('_method','DELETE')}}
-        {{Form::submit('Delete post',['class'=>'btn btn-danger'])}}
-    {!!Form::close()!!}
+    @if(!Auth::guest()&&Auth::user()->id==$post->user_id)
+        {{-- @if(Auth::user()->id==$post->user_id) --}}
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit post</a>
+            {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'post','class'=>'pull-right'])!!}
+                {{Form::hidden('_method','DELETE')}}
+                {{Form::submit('Delete post',['class'=>'btn btn-danger'])}}
+            {!!Form::close()!!}
+        {{-- @endif --}}
+    @endif
 @endsection
